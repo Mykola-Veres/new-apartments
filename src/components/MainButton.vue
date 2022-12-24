@@ -7,11 +7,11 @@
 <script>
   export default {
     name: "MainButton",
-    props: {type: {type: String,
-    default: "button",
-    required: true}}   
-    
-  }
+    props: {type: {
+      type: String,
+      default: "button",
+      required: true}} 
+    }
 </script>
 
 <style lang="scss" scoped>

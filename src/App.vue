@@ -1,7 +1,8 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <NewCopponentVue ></NewCopponentVue>
-  <MainButton type="submit">Click Me </MainButton>
+  <NewCopponentVue v-on:click="increment"></NewCopponentVue>
+  <MainButton @click="increment" type="button"> <span> By</span> Click Me </MainButton>
+  <h2>{{ title }}</h2>
 </template>
 
 <script>
@@ -14,6 +15,18 @@ export default {
   components: {
     NewCopponentVue,
     MainButton,
+},
+data(){return{
+  amountOfClicks: 10
+}},
+computed: {
+  title(){
+    return`Amount of clicks ${this.amountOfClicks}`}
+},
+methods: {
+  increment(){
+    this.amountOfClicks += 10
+  }
 }
 }
 </script>
