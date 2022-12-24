@@ -1,16 +1,20 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <NewCopponentVue ></NewCopponentVue>
+  <MainButton type="submit">Click Me </MainButton>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import MainButton from './components/MainButton.vue';
+import NewCopponentVue from './components/NewCopponent.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    NewCopponentVue,
+    MainButton,
+}
 }
 </script>
 
