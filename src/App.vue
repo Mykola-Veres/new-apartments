@@ -1,8 +1,8 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <NewCopponentVue v-on:click="increment"></NewCopponentVue>
-  <MainButton @click="increment" type="button"> <span> By</span> Click Me </MainButton>
-  <h2>{{ title }}</h2>
+  <NewCopponentVue v-on:click="increment" :id="$style.app"></NewCopponentVue>
+  <MainButton @click="increment" type="button" outline> <span> By</span> Click Me </MainButton>
+  <h2 :id="$style.app">{{ title }}</h2>
 </template>
 
 <script>
@@ -31,7 +31,7 @@ methods: {
 }
 </script>
 
-<style>
+<style module>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
