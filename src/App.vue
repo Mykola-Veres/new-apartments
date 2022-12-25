@@ -3,18 +3,21 @@
   <NewCopponentVue v-on:click="increment" :id="$style.app"></NewCopponentVue>
   <MainButton @click="increment" type="button" outline> <span> By</span> Click Me </MainButton>
   <h2 :id="$style.app">{{ title }}</h2>
+  <DerectiveTestVue></DerectiveTestVue>
 </template>
 
 <script>
 
 import MainButton from './components/MainButton.vue';
 import NewCopponentVue from './components/NewCopponent.vue';
+import DerectiveTestVue from './components/DerectiveTest.vue';
 
 export default {
   name: 'App',
   components: {
     NewCopponentVue,
     MainButton,
+    DerectiveTestVue,
 },
 data(){return{
   amountOfClicks: 10
