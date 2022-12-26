@@ -7,7 +7,12 @@
   <h2 :id="$style.app">{{ title }}</h2>
   <DerectiveTestVue></DerectiveTestVue>
   <StarRatingVue :rating="3.6"></StarRatingVue>
-  <ApartmentIremVue :rating="4"></ApartmentIremVue>
+  <ApartmentsIremVue
+    :rating="apartment.rating"
+    :price="apartment.price"
+    :description="apartment.descr"
+    imgSrc="#"
+  ></ApartmentsIremVue>
 </template>
 
 <script>
@@ -15,7 +20,7 @@ import MainButton from "./components/MainButton.vue";
 import NewCopponentVue from "./components/NewCopponent.vue";
 import DerectiveTestVue from "./components/DerectiveTest.vue";
 import StarRatingVue from "./components/StarRating.vue";
-import ApartmentIremVue from "./components/apartment/ApartmentIrem.vue";
+import ApartmentsIremVue from "./components/apartment/ApartmentsIrem.vue";
 
 export default {
   name: "App",
@@ -24,11 +29,19 @@ export default {
     MainButton,
     DerectiveTestVue,
     StarRatingVue,
-    ApartmentIremVue,
+    ApartmentsIremVue,
   },
   data() {
     return {
       amountOfClicks: 10,
+      apartment: {
+        id: "423324",
+        title: "dgfhdghdfhgd",
+        descr: "gjhfgjfgjmjffggggggggggggggggggggggg",
+        price: 23542354,
+        location: { city: "kyiv" },
+        rating: 4.6,
+      },
     };
   },
   computed: {

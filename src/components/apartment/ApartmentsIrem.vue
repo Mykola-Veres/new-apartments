@@ -17,7 +17,7 @@
 import StarRatingVue from "../StarRating.vue";
 
 export default {
-  name: "ApartmentItem",
+  name: "ApartmentsItem",
   components: {
     StarRatingVue,
   },
