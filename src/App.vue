@@ -7,6 +7,7 @@
   <h2 :id="$style.app">{{ title }}</h2>
   <DerectiveTestVue></DerectiveTestVue>
   <StarRatingVue :rating="3.6"></StarRatingVue>
+  <ApartmentIremVue :rating="4"></ApartmentIremVue>
 </template>
 
 <script>
@@ -14,6 +15,7 @@ import MainButton from "./components/MainButton.vue";
 import NewCopponentVue from "./components/NewCopponent.vue";
 import DerectiveTestVue from "./components/DerectiveTest.vue";
 import StarRatingVue from "./components/StarRating.vue";
+import ApartmentIremVue from "./components/apartment/ApartmentIrem.vue";
 
 export default {
   name: "App",
@@ -22,6 +24,7 @@ export default {
     MainButton,
     DerectiveTestVue,
     StarRatingVue,
+    ApartmentIremVue,
   },
   data() {
     return {
