@@ -7,7 +7,18 @@
   <DerectiveTestVue></DerectiveTestVue>
   <StarRatingVue :rating="3.6"></StarRatingVue>
 
-  <ApartmentsListVue :items="apartments" />
+  <ApartmentsListVue :items="apartments">
+    <template v-slot:title>Подборка согласно выбора</template>
+    <template v-slot:apartment="{ apartment }">
+      <ApartmentsItemVue
+        :key="apartment.id"
+        :rating="apartment.rating"
+        :price="apartment.price"
+        :description="apartment.descr"
+        :imgSrc="apartment.imgUrl"
+      ></ApartmentsItemVue>
+    </template>
+  </ApartmentsListVue>
 </template>
 
 <script>
@@ -17,6 +28,7 @@ import DerectiveTestVue from "./components/DerectiveTest.vue";
 import StarRatingVue from "./components/StarRating.vue";
 import ApartmentsListVue from "./components/apartment/ApartmentsList.vue";
 import apartments from "./components/apartment/apartments";
+import ApartmentsItemVue from "./components/apartment/ApartmentsItem.vue";
 
 export default {
   name: "App",
@@ -26,6 +38,7 @@ export default {
     DerectiveTestVue,
     StarRatingVue,
     ApartmentsListVue,
+    ApartmentsItemVue,
   },
   data() {
     return {

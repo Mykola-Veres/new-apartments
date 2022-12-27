@@ -1,25 +1,28 @@
 <template>
+  <slot name="title"></slot>
   <ConteinerPageVue>
     <div class="apartments-list">
-      <ApartmentsItemVue
+      <template v-for="apartment in items">
+        <slot name="apartment" v-bind:apartment="apartment"></slot>
+      </template>
+      <!-- <ApartmentsItemVue
         v-for="{ id, rating, imgUrl, descr, price } in items"
         :key="id"
         :rating="rating"
         :price="price"
         :description="descr"
         :imgSrc="imgUrl"
-      />
+      /> -->
     </div>
   </ConteinerPageVue>
 </template>
 
 <script>
-import ApartmentsItemVue from "./ApartmentsItem.vue";
 import ConteinerPageVue from "../shared/ConteinerPage.vue";
 
 export default {
   name: "ApartmentsList",
-  components: { ApartmentsItemVue, ConteinerPageVue },
+  components: { ConteinerPageVue },
   props: {
     items: {
       type: Array,
