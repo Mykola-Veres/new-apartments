@@ -1,18 +1,13 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <NewCopponentVue v-on:click="increment" :id="$style.app"></NewCopponentVue>
+  <NewCopponentVue v-on:click="increment"></NewCopponentVue>
   <MainButton @click="increment" type="button" outline>
     <span> By</span> Click Me
   </MainButton>
-  <h2 :id="$style.app">{{ title }}</h2>
   <DerectiveTestVue></DerectiveTestVue>
   <StarRatingVue :rating="3.6"></StarRatingVue>
-  <ApartmentsIremVue
-    :rating="apartment.rating"
-    :price="apartment.price"
-    :description="apartment.descr"
-    imgSrc="#"
-  ></ApartmentsIremVue>
+
+  <ApartmentsListVue :items="apartments" />
 </template>
 
 <script>
@@ -20,7 +15,8 @@ import MainButton from "./components/MainButton.vue";
 import NewCopponentVue from "./components/NewCopponent.vue";
 import DerectiveTestVue from "./components/DerectiveTest.vue";
 import StarRatingVue from "./components/StarRating.vue";
-import ApartmentsIremVue from "./components/apartment/ApartmentsIrem.vue";
+import ApartmentsListVue from "./components/apartment/ApartmentsList.vue";
+import apartments from "./components/apartment/apartments";
 
 export default {
   name: "App",
@@ -29,19 +25,12 @@ export default {
     MainButton,
     DerectiveTestVue,
     StarRatingVue,
-    ApartmentsIremVue,
+    ApartmentsListVue,
   },
   data() {
     return {
+      apartments,
       amountOfClicks: 10,
-      apartment: {
-        id: "423324",
-        title: "dgfhdghdfhgd",
-        descr: "gjhfgjfgjmjffggggggggggggggggggggggg",
-        price: 23542354,
-        location: { city: "kyiv" },
-        rating: 4.6,
-      },
     };
   },
   computed: {
@@ -57,13 +46,13 @@ export default {
 };
 </script>
 
-<style module>
+<style lang="scss" module>
 #app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

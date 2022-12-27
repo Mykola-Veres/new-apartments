@@ -45,7 +45,7 @@ export default {
 <style lang="scss" scoped>
 .apartments-item {
   position: relative;
-  width: 33.333%;
+  width: 350px;
   padding: 0 15px;
   margin-bottom: 30px;
 
@@ -73,7 +73,7 @@ export default {
 
   &__description {
     margin-bottom: 20px;
-    max-height: calc(1em * 1.4 * 3);
+    max-height: calc(1em * 1.4 * 4);
     overflow: hidden;
   }
 
