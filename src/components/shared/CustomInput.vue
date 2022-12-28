@@ -1,11 +1,6 @@
 <template>
   <div class="wrapper-input">
-    <input
-      v-model="text"
-      v-on="listeners"
-      v-bind="listeners"
-      class="custom-input"
-    />
+    <input v-model="text" v-bind="listeners" class="custom-input" />
     <h2>{{ text }}</h2>
   </div>
 </template>

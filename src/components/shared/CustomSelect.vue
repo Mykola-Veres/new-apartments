@@ -1,5 +1,5 @@
 <template>
-  <select class="custom-select">
+  <select class="custom-select" v-model="city">
     <option
       v-for="item in formatedItems"
       :key="item.value"
@@ -14,6 +14,9 @@
 <script>
 export default {
   name: "CustomSelect",
+  data() {
+    return { city: "" };
+  },
   props: {
     items: {
       type: Array,
