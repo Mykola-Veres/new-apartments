@@ -7,6 +7,20 @@
   <DerectiveTestVue></DerectiveTestVue>
   <StarRatingVue :rating="3.6"></StarRatingVue>
 
+  <h2>{{ text }}</h2>
+  <h2>{{ number }}</h2>
+
+  <input
+    type="text"
+    :value="number"
+    @input="(event) => (number = event.target.value)"
+  />
+
+  <CustomInputVue />
+
+  <h2>{{ text }}</h2>
+  <CustomSelect v-model="city" :items="[`hkhjk`, `ghijghk`]"></CustomSelect>
+
   <ApartmentsListVue :items="apartments">
     <template v-slot:title>Подборка согласно выбора</template>
     <template v-slot:apartment="{ apartment }">
@@ -16,6 +30,7 @@
         :price="apartment.price"
         :description="apartment.descr"
         :imgSrc="apartment.imgUrl"
+        @click="hanselNativeClick"
       ></ApartmentsItemVue>
     </template>
   </ApartmentsListVue>
@@ -29,6 +44,8 @@ import StarRatingVue from "./components/StarRating.vue";
 import ApartmentsListVue from "./components/apartment/ApartmentsList.vue";
 import apartments from "./components/apartment/apartments";
 import ApartmentsItemVue from "./components/apartment/ApartmentsItem.vue";
+import CustomInputVue from "./components/shared/CustomInput.vue";
+import CustomSelect from "./components/shared/CustomSelect.vue";
 
 export default {
   name: "App",
@@ -39,11 +56,16 @@ export default {
     StarRatingVue,
     ApartmentsListVue,
     ApartmentsItemVue,
+    CustomInputVue,
+    CustomSelect,
   },
   data() {
     return {
       apartments,
       amountOfClicks: 10,
+      text: "",
+      number: "",
+      city: "",
     };
   },
   computed: {
@@ -54,6 +76,9 @@ export default {
   methods: {
     increment() {
       this.amountOfClicks += 10;
+    },
+    hanselNativeClick() {
+      console.log("emitClick");
     },
   },
 };

@@ -1,5 +1,5 @@
 <template>
-  <div class="apartments-item">
+  <div class="apartments-item" @click="log(5, $event)">
     <div class="apartments-item__inner">
       <img :src="imgSrc" class="apartments-item__photo" />
       <div class="apartments-item__content">
@@ -8,6 +8,9 @@
           <StarRatingVue :rating="rating"></StarRatingVue>
         </div>
         <div class="apartments-item__price">UAN {{ price }}</div>
+        <a href="http://facebook.com" @click.prevent.stop="handelClick"
+          >facebook</a
+        >
       </div>
     </div>
   </div>
@@ -20,6 +23,14 @@ export default {
   name: "ApartmentsItem",
   components: {
     StarRatingVue,
+  },
+  methods: {
+    log(i, event) {
+      console.log(event, i);
+    },
+    handelClick() {
+      console.log("handelClickFB");
+    },
   },
   props: {
     description: {
