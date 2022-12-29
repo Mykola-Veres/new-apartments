@@ -1,7 +1,12 @@
 <template>
-  <ApartmentFilterFormVue @submit="logger"></ApartmentFilterFormVue>
-
-  <ApartmentsListVue :items="apartments">
+  <ConteinerPageVue>
+    <ApartmentFilterFormVue
+      class="apartments-filter"
+      @submit="filter"
+    ></ApartmentFilterFormVue>
+  </ConteinerPageVue>
+  <p v-if="!filteredApartments.length">Ничего не найдено</p>
+  <ApartmentsListVue v-else :items="filteredApartments">
     <template v-slot:title>Подборка согласно выбора</template>
     <template v-slot:apartment="{ apartment }">
       <ApartmentsItemVue
@@ -14,6 +19,7 @@
       ></ApartmentsItemVue>
     </template>
   </ApartmentsListVue>
+  <FooterPage></FooterPage>
 </template>
 
 <script>
@@ -21,6 +27,8 @@ import ApartmentsListVue from "./components/apartment/ApartmentsList.vue";
 import apartments from "./components/apartment/apartments";
 import ApartmentsItemVue from "./components/apartment/ApartmentsItem.vue";
 import ApartmentFilterFormVue from "./components/ApartmentFilterForm.vue";
+import ConteinerPageVue from "./components/shared/ConteinerPage.vue";
+import FooterPage from "./components/FooterPage.vue";
 
 export default {
   name: "App",
@@ -28,6 +36,8 @@ export default {
     ApartmentsListVue,
     ApartmentsItemVue,
     ApartmentFilterFormVue,
+    ConteinerPageVue,
+    FooterPage,
   },
   data() {
     return {
@@ -43,6 +53,10 @@ export default {
     title() {
       return `Amount of clicks ${this.amountOfClicks}`;
     },
+    filteredApartments() {
+      console.log(this.filters.price, this.filters.city);
+      return this.filterByCityName(this.filterByPrice(this.apartments));
+    },
   },
   methods: {
     hanselNativeClick(value) {
@@ -52,15 +66,20 @@ export default {
     filter({ city, price }) {
       this.filters.city = city;
       this.filters.price = price;
+      console.log(this.filters.price, this.filters.city);
     },
-    filterByCityName() {
-      return this.apartments.filter((apartment) => {
+    filterByCityName(apartments) {
+      if (!this.filters.city) return apartments;
+
+      return apartments.filter((apartment) => {
         return apartment.location.city === this.filters.city;
       });
     },
-    filterByPrice() {
-      return this.apartments.filter((apartment) => {
-        return apartment.location.price >= this.filters.price;
+    filterByPrice(apartments) {
+      if (!this.filters.price) return apartments;
+
+      return apartments.filter((apartment) => {
+        return apartment.price >= this.filters.price;
       });
     },
   },
@@ -75,5 +94,8 @@ export default {
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.apartments-filter {
+  margin-bottom: 40px;
 }
 </style>

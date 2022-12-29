@@ -31,7 +31,17 @@ export default {
 
   computed: {
     cities() {
-      return [{ value: "", label: "cities", selected: true }, "kyiv", "lviv"];
+      return [
+        { value: "", label: "Город", selected: true },
+        "Kyiv",
+        "Odesa",
+        "Poltava",
+        "Kharkiv",
+        "Dnipro",
+        "Lviv",
+        "Kherson",
+        "Mariupol",
+      ];
     },
   },
 };
