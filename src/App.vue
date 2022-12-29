@@ -33,8 +33,10 @@ export default {
     return {
       apartments,
       amountOfClicks: 10,
-      text: "",
-      city: "",
+      filters: {
+        city: "",
+        price: 0,
+      },
     };
   },
   computed: {
@@ -43,14 +45,23 @@ export default {
     },
   },
   methods: {
-    increment() {
-      this.amountOfClicks += 10;
-    },
-    logger(value) {
-      console.log(value, "value---");
-    },
     hanselNativeClick(value) {
       console.log(value, "value---click");
+    },
+
+    filter({ city, price }) {
+      this.filters.city = city;
+      this.filters.price = price;
+    },
+    filterByCityName() {
+      return this.apartments.filter((apartment) => {
+        return apartment.location.city === this.filters.city;
+      });
+    },
+    filterByPrice() {
+      return this.apartments.filter((apartment) => {
+        return apartment.location.price >= this.filters.price;
+      });
     },
   },
 };
